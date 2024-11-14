@@ -46,9 +46,8 @@ public class Menu {
 	 * @return la opción seleccionada por el usuario
 	 */
 	static userOption showMenu() {
-		System.out.println("Choose an option below: ");
-		System.out.println();
-		System.out.println("1. Converse XML");
+		System.out.println("\nChoose an option below: ");
+		System.out.println("\n1. Converse XML");
 		System.out.println("2. Show XML");
 		System.out.println("3. Obtain Character");
 		System.out.println("4. Save Character");
@@ -56,7 +55,20 @@ public class Menu {
 		System.out.println("6. Location of Character");
 		System.out.println("7. Exit");
 
-		int option = Integer.parseInt(scanner.nextLine());
+		String input = scanner.nextLine();
+		if (input.isEmpty()) {
+			System.out.println("Error, input cannot be empty");
+			return showMenu();
+		}
+
+		int option;
+		try {
+			option = Integer.parseInt(input);
+		} catch (NumberFormatException e) {
+			System.out.println("Error, choose a valid option");
+			return showMenu();
+		}
+
 		if (option < 1 || option > userOption.values().length) {
 			System.out.println("Error, choose a valid option");
 			return showMenu();

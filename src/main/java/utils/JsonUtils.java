@@ -23,6 +23,9 @@ public class JsonUtils {
      * @throws Exception Excepción en caso de error
      */
     public static <T> T getApiJsonEndpoint(String urlApi, int endpoint, Class<T> genericClass) throws Exception {
+        if (!urlApi.startsWith("http://") && !urlApi.startsWith("https://")) {
+            urlApi = "http://" + urlApi;
+        }
         String urlString = urlApi + "/" + endpoint;
         return getApiJson(urlString, genericClass);
     }
@@ -36,6 +39,9 @@ public class JsonUtils {
      * @throws Exception Excepción en caso de error
      */
     public static <T> T getApiJson(String urlApi, Class<T> genericClass) throws Exception {
+        if (!urlApi.startsWith("http://") && !urlApi.startsWith("https://")) {
+            urlApi = "http://" + urlApi;
+        }
         return getApiJson(urlApi, genericClass, new Gson());
     }
 
@@ -47,6 +53,9 @@ public class JsonUtils {
      * @throws Exception Excepción en caso de error
      */
     public static JSONObject getApiJsonEpisode(String urlApi, int endpoint) throws Exception {
+        if (!urlApi.startsWith("http://") && !urlApi.startsWith("https://")) {
+            urlApi = "http://" + urlApi;
+        }
         String urlString = urlApi + "/" + endpoint;
         return getApiJson(urlString, JSONObject.class, new Gson());
     }
