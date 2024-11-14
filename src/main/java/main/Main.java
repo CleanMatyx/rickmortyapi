@@ -10,7 +10,7 @@ import utils.SerializationUtils;
 public class Main {
 
 	/**
-	 * Méthdo main que inicia el programa.
+	 * Método main que inicia el programa.
 	 */
 	public static void main(String[] args) throws Exception {
 		SerializationUtils.loadData();

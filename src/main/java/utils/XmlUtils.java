@@ -15,7 +15,6 @@ import data.Character;
 
 /**
  * Clase que contiene los métodos para convertir un objeto JSON a XML
- * 
  */
 public class XmlUtils {
 

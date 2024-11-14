@@ -4,10 +4,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
-import java.util.logging.Logger;
-
 import data.Character;
-
 import data.Location;
 import utils.JsonUtils;
 import utils.SerializationUtils;
@@ -22,7 +19,6 @@ public class Menu {
 	 * Scanner para leer la entrada del usuario
 	 */
 	static Scanner scanner = new Scanner(System.in);
-	private static final Logger logger = Logger.getLogger(Menu.class.getName());
 
 	/**
 	 * Enumerado con las opciones del menú
@@ -38,6 +34,7 @@ public class Menu {
 	static void menuLoop() throws Exception {
 		userOption option;
 		do {
+			Constants.showWelcome();
 			option = showMenu();
 			opcionMenu(option);
 		} while (option != userOption.EXIT);
@@ -136,12 +133,17 @@ public class Menu {
 	static void obtainPSNJ() {
 		int num;
 		do{
-			num = getValidIntegerInput("Insert a character to obtain: [1 - 826]");
-		} while (num < 0 && num > 827);
-
+			num = getValidIntegerInput("Insert a character to obtain: [1 - 825]");
+			if(num < 0 || num > 827){
+                System.out.println("Error, choose a valid character");
+            } else {
+                break;
+            }
+		} while (true);
+		
 		try {
 			Character character = JsonUtils.getApiJsonEndpoint(Constants.CHARACTERS_URL, num, Character.class);
-			Constants.addPersonaje(character);
+			Constants.addCharacterToList(character);
 			System.out.println("Character obtained: " + character);
 		} catch (Exception e) {
 			System.out.println("ERROR obtained: " + e.getMessage());
@@ -156,7 +158,6 @@ public class Menu {
 	static void savePSNJ() {
 		List<Character> characters = Constants.CHARACTERS_LIST;
 		SerializationUtils.serializePersonajes(characters);
-		System.out.println("Characters saved successfully at: " + Constants.DATA_FOLDER + Constants.CHARACTERS_FILE);
 		cleanConsole();
 	}
 
@@ -195,11 +196,14 @@ public class Menu {
 						+ "\n\tDimension: " + location.getDimension());
 			}
 		} else {
-			System.out.println("No characters found with the name: " + name);
+			System.out.println(Constants.NO_CHRCTS_FND_MSSG + name);
 		}
 		cleanConsole();
 	}
 
+	/**
+	 * Método que cierra la aplicación
+	 */
 	static void exit() {
 		System.exit(0);
 	}

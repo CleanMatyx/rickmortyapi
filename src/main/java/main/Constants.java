@@ -17,11 +17,10 @@ public class Constants {
     public static List<Character> CHARACTERS_LIST = new ArrayList<>();
     public static final String NO_CHRCTS_MSSG = "No characters loaded";
     public static final String CHRCTS_LOADED_MSSG = "Characters loaded from: ";
-    public static final String NO_CHRCTS_SV_MSSG = "No characters saved";
     public static final String CHRCTS_SV_MSSG = "Characters saved at: ";
     public static final String NO_CHRCTS_FND_MSSG = "No characters found with the name: ";
 
-    public static void addPersonaje(Character character) {
+    public static void addCharacterToList(Character character) {
         boolean exists = CHARACTERS_LIST.stream().anyMatch(p -> p.getId() == character.getId());
         if (!exists) {
             CHARACTERS_LIST.add(character);
@@ -31,13 +30,18 @@ public class Constants {
         }
     }
 
-	public static Character getCharacter(String nombre) {
-		Character character = null;
-		for (Character p : CHARACTERS_LIST) {
-			if (p.getName().toLowerCase().contains(nombre.toLowerCase())) {
-				character = p;
-			}
-		}
-		return character;
-	}
+    public static void showWelcome() {
+        System.out.println("██████  ██  ██████ ██   ██      █████  ███    ██ ██████      ███    ███  ██████  ██████  " +
+                "████████ ██    ██ ");
+        System.out.println("██   ██ ██ ██      ██  ██      ██   ██ ████   ██ ██   ██     ████  ████ ██    ██ ██   ██ " +
+                "   ██     ██  ██  ");
+        System.out.println("██████  ██ ██      █████       ███████ ██ ██  ██ ██   ██     ██ ████ ██ ██    ██ ██████  " +
+                "   ██      ████   ");
+        System.out.println("██   ██ ██ ██      ██  ██      ██   ██ ██  ██ ██ ██   ██     ██  ██  ██ ██    ██ ██   ██ " +
+                "   ██       ██    ");
+        System.out.println("██   ██ ██  ██████ ██   ██     ██   ██ ██   ████ ██████      ██      ██  ██████  ██   ██ " +
+                "   ██       ██    ");
+        System.out.println("========================================= The Rick and Morty API ========================" +
+                "================= ");
+    }
 }

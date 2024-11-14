@@ -20,19 +20,9 @@ public class Origin implements Serializable {
         this.name = jsonObject.get("name").toString();
         this.url = jsonObject.get("url").toString();
     }
-    
-	public Origin(String name) {
-		this.name = name;
-	}
-
-    // Getters and toString method...
 
     public String getName() {
         return name;
-    }
-
-    public String getUrl() {
-        return url;
     }
 
     @Override
