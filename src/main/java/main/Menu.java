@@ -3,7 +3,6 @@ package main;
 import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 import data.Character;
 import data.Location;
 import utils.JsonUtils;
@@ -12,7 +11,6 @@ import utils.XmlUtils;
 
 /**
  * Clase que contiene el menú de la aplicación
- *
  */
 public class Menu {
 	/**
@@ -29,7 +27,7 @@ public class Menu {
 	}
 
 	/**
-	 * Método que muestra el menú y pide al usuario una opción
+	 * Función principal que muestra el menú y llama a las opciones seleccionadas por el usuario
 	 */
 	static void menuLoop() throws Exception {
 		userOption option;
@@ -41,7 +39,7 @@ public class Menu {
 	}
 
 	/**
-	 * Método que muestra el menú y pide al usuario una opción
+	 * Función que muestra el menú y pide al usuario una selección
 	 * Si la selección es diferente al número de opciones, se vuelve a pedir la selección
 	 * Impide también numeros negativos
 	 *
@@ -67,11 +65,10 @@ public class Menu {
 	}
 
 	/**
-	 * Método que llama a los métodos de las opciones del menú
+	 * Función que llama a la opción seleccionada por el usuario
 	 *
 	 * @param option opción seleccionada por el usuario
-	 * @return la opción seleccionada por el usuario
-	 */
+     */
 	static void opcionMenu(userOption option) throws Exception {
 		switch (option) {
 			case CONVERSOR_XML:
@@ -102,7 +99,7 @@ public class Menu {
 	}
 
 	/**
-	 * Método que pide al usuario un episodio (un entero) y genera un archivo XML con los datos de ese episodio
+	 * Función que pide al usuario un episodio y lo convierte a XML
 	 */
 	static void conversorXML() {
 		int episode;
@@ -119,7 +116,7 @@ public class Menu {
 	}
 
 	/**
-	 * Método que muestra el contenido de un archivo XML generado por el programa en formato JSON
+	 * Función que muestra el archivo XML obtenido en la función anterior
 	 */
 	static void showXML() {
 		System.out.println("Showing XML file...");
@@ -128,7 +125,9 @@ public class Menu {
 	}
 
 	/**
-	 * Método que pide al usuario un personaje (un entero) y obtiene los datos de ese personaje
+	 * Función que pide al usuario un personaje y lo obtiene de la API
+	 * Añade el personaje a la lista de personajes de la aplicación
+	 * Si el personaje ya está en la lista, no lo añade
 	 */
 	static void obtainPSNJ() {
 		int num;
@@ -153,7 +152,9 @@ public class Menu {
 
 
 	/**
-	 * Método que guarda los personajes en un archivo
+	 * Función que guarda los personajes en un archivo
+	 * Si no hay personajes, no guarda nada
+	 * Si no existe la carpeta de datos, la crea y guarda los personajes
 	 */
 	static void savePSNJ() {
 		List<Character> characters = Constants.CHARACTERS_LIST;
@@ -162,7 +163,7 @@ public class Menu {
 	}
 
 	/**
-	 * Método que muestra los personajes cargados
+	 * Función que muestra los personajes de la lista de personajes de la aplicación
 	 */
 	static void showPSNJ() {
 		if (Constants.CHARACTERS_LIST != null) {
@@ -176,16 +177,16 @@ public class Menu {
 	}
 
 	/**
-	 * Método que pide al usuario un personaje y muestra la localización de ese personaje
-	 * @throws Exception
-	 */
+	 * Función que pide al usuario un personaje y muestra su localización
+	 * Si no se encuentra el personaje, muestra un mensaje de error y vuelve al menú
+     */
 	static void locationPSNJ() throws Exception {
 		System.out.println("Insert the name of the character to get the location: ");
 		String name = scanner.nextLine();
 		List<Character> matchingCharacters = Constants.CHARACTERS_LIST != null ?
 				Constants.CHARACTERS_LIST.stream()
 						.filter(p -> p.getName().toLowerCase().contains(name.toLowerCase()))
-						.collect(Collectors.toList()) :
+						.toList() :
 				Collections.emptyList();
 
 		if (!matchingCharacters.isEmpty()) {
@@ -202,22 +203,22 @@ public class Menu {
 	}
 
 	/**
-	 * Método que cierra la aplicación
+	 * Función que cierra la aplicación
 	 */
 	static void exit() {
 		System.exit(0);
 	}
 
 	/**
-	 * Método que pide al usuario un entero y comprueba que sea un entero válido
-	 * @param prompt
-	 * @return el entero introducido por el usuario
+	 * Función que pide al usuario un entero y comprueba que sea válido
+	 * @param input input a comprobar, si no es un entero válido, se pide de nuevo
+	 * @return el entero introducido por el usuario si es válido
 	 */
-	private static int getValidIntegerInput(String prompt) {
+	private static int getValidIntegerInput(String input) {
 		int result;
 		while (true) {
 			try {
-				System.out.println(prompt);
+				System.out.println(input);
 				result = Integer.parseInt(scanner.nextLine());
 				break;
 			} catch (NumberFormatException e) {
@@ -228,7 +229,7 @@ public class Menu {
 	}
 
 	/**
-	 * Método que limpia la consola
+	 * Función que limpia la consola
 	 */
 	private static void cleanConsole() {
 		System.out.println("Press Enter to continue...");

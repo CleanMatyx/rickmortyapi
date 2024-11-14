@@ -14,7 +14,7 @@ public class Origin implements Serializable {
 
     /**
      * Constructor de la clase Origin
-     * @param jsonObject
+     * @param jsonObject Objeto JSON con los datos del origen
      */
     public Origin(JSONObject jsonObject) {
         this.name = jsonObject.get("name").toString();

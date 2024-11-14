@@ -9,7 +9,6 @@ import org.json.simple.JSONObject;
 /**
  * Clase que contiene los datos de los personajes
  */
-@SuppressWarnings("serial")
 public class Character implements Serializable {
     private int id;
     private String name;
@@ -26,18 +25,18 @@ public class Character implements Serializable {
 
     /**
      * Constructor de la clase Personaje
-     * @param id
-     * @param name
-     * @param status
-     * @param species
-     * @param type
-     * @param gender
-     * @param origin
-     * @param location
-     * @param image
-     * @param episode
-     * @param url
-     * @param created
+     * @param id identificador del personaje
+     * @param name nombre del personaje
+     * @param status estado del personaje
+     * @param species especie del personaje
+     * @param type tipo del personaje
+     * @param gender género del personaje
+     * @param origin origen del personaje
+     * @param location localización del personaje
+     * @param image imagen del personaje
+     * @param episode episodios en los que aparece el personaje
+     * @param url url del personaje
+     * @param created fecha de creación del personaje
      */
     public Character(int id, String name, String status, String species, String type, String gender, Origin origin,
                      Location location, String image, List<String> episode, String url, String created) {

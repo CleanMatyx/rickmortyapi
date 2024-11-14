@@ -1,5 +1,6 @@
 package utils;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -19,30 +20,30 @@ import data.Character;
 public class XmlUtils {
 
 	/**
-	 * Método que convierte un episodio en formato JSON a XML
+	 * Función que convierte un episodio en formato JSON a XML
 	 * 
-	 * @param episodio
+	 * @param episodio Número de episodio
 	 */
     public static void convertToXml(int episodio) {
         try {
             JSONObject episodioJson = JsonUtils.getApiJsonEpisode(Constants.EPISODES_URL, episodio);
 
-            String xml = "<episode>\n";
-            xml += "\t<id>" + episodioJson.get("id") + "</id>\n";
-            xml += "\t<name>" + episodioJson.get("name") + "</name>\n";
-            xml += "\t<air_date>" + episodioJson.get("air_date") + "</air_date>\n";
-            xml += "\t<episode>" + episodioJson.get("episode") + "</episode>\n";
-            xml += "\t<characters>\n";
+            StringBuilder xml = new StringBuilder("<episode>\n");
+            xml.append("\t<id>").append(episodioJson.get("id")).append("</id>\n");
+            xml.append("\t<name>").append(episodioJson.get("name")).append("</name>\n");
+            xml.append("\t<air_date>").append(episodioJson.get("air_date")).append("</air_date>\n");
+            xml.append("\t<episode>").append(episodioJson.get("episode")).append("</episode>\n");
+            xml.append("\t<characters>\n");
 
-            List<String> characters = (List<String>) episodioJson.get("characters");
-            for (String character : characters) {
-                xml += "\t\t<character>" + character + "</character>\n";
+            List<String> charactersList = (List<String>) episodioJson.get("characters");
+            for (String character : charactersList) {
+                xml.append("\t\t<character>").append(character).append("</character>\n");
             }
 
-            xml += "\t</characters>\n";
-            xml += "\t<url>" + episodioJson.get("url") + "</url>\n";
-            xml += "\t<created>" + episodioJson.get("created") + "</created>\n";
-            xml += "</episode>";
+            xml.append("\t</characters>\n");
+            xml.append("\t<url>").append(episodioJson.get("url")).append("</url>\n");
+            xml.append("\t<created>").append(episodioJson.get("created")).append("</created>\n");
+            xml.append("</episode>");
 
             File directory = new File(Constants.DATA_FOLDER);
             if (!directory.exists()) {
@@ -51,16 +52,16 @@ public class XmlUtils {
             }
 
             try (FileWriter fileWriter = new FileWriter(new File(directory, Constants.RESULTS_FILE))) {
-                fileWriter.write(xml);
+                fileWriter.write(xml.toString());
                 System.out.println("File saved successfully: " + Constants.RESULTS_FILE);
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("Error: " + e.getMessage());
         }
     }
     
     /**
-     * Método que lee un archivo XML
+     * Función que lee un archivo XML
      */
     public static void readXml() {
         File file = new File(Constants.DATA_FOLDER, Constants.RESULTS_FILE);
@@ -90,14 +91,13 @@ public class XmlUtils {
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("Error: " + e.getMessage());
         }
     }
 
     /**
-     * Método que procesa los personajes de un episodio
-     * @param charactersElement
-     * @throws Exception
+     * Función que procesa los personajes de un episodio
+     * @param charactersElement Elemento XML de los personajes
      */
     private static void processCharacters(Element charactersElement) throws Exception {
         System.out.println("Characters: ");
@@ -112,5 +112,4 @@ public class XmlUtils {
             }
         }
     }
-
 }

@@ -13,9 +13,8 @@ import main.Constants;
 public class SerializationUtils {
 
 	/**
-	 * Método que serializa los personajes
-	 * @param characters
-	 * @throws IOException
+	 * Función que serializa los personajes
+	 * @param characters Lista de personajes
 	 */
 	public static void serializePersonajes(List<Character> characters) {
 		try {
@@ -31,13 +30,13 @@ public class SerializationUtils {
 				System.out.println(Constants.CHRCTS_SV_MSSG + Constants.DATA_FOLDER + Constants.CHARACTERS_FILE);
 			}
 		} catch (IOException e) {
-			e.printStackTrace();
+			System.out.println("Error saving characters: " + e.getMessage());
 		}
 	}
 
 
 	/**
-	 * Método que deserializa los personajes
+	 * Función que deserializa los personajes y los carga en una lista
 	 * @return List<Character> characters
 	 */
 	public static List<Character> deserializePersonajes() {
@@ -51,7 +50,7 @@ public class SerializationUtils {
 			} catch (EOFException e) {
 				System.out.println("End of file reached unexpectedly: " + e.getMessage());
 			} catch (Exception e) {
-				e.printStackTrace();
+				System.out.println("Error loading characters: " + e.getMessage());
 			}
 		} else {
 			System.out.println("File does not exist or is empty: " + Constants.CHARACTERS_FILE);
@@ -61,7 +60,7 @@ public class SerializationUtils {
 	}
 
 	/**
-	 * Método que carga los datos de los personajes
+	 * Función que guarda los personajes en un archivo serializado si la lista no está vacía
 	 */
 	public static void loadData() {
 		Constants.CHARACTERS_LIST = SerializationUtils.deserializePersonajes();

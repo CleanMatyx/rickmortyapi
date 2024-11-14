@@ -21,13 +21,13 @@ public class Location implements Serializable {
 
 	/**
 	 * Constructor de la clase Location
-	 * @param id
-	 * @param name
-	 * @param type
-	 * @param dimension
-	 * @param residents
-	 * @param url
-	 * @param created
+	 * @param id de la localización
+	 * @param name nombre de la localización
+	 * @param type tipo de la localización
+	 * @param dimension dimensión de la localización
+	 * @param residents residentes de la localización
+	 * @param url url de la localización
+	 * @param created fecha de creación de la localización
 	 */
 	public Location(int id, String name, String type, String dimension, List<String> residents, String url, String created) {
 		this.id = id;
