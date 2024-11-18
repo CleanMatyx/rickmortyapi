@@ -1,6 +1,5 @@
 package utils;
 
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -24,7 +23,8 @@ public class XmlUtils {
 	 * 
 	 * @param episodio Número de episodio
 	 */
-    public static void convertToXml(int episodio) {
+    @SuppressWarnings("unchecked")
+	public static void convertToXml(int episodio) {
         try {
             JSONObject episodioJson = JsonUtils.getApiJsonEpisode(Constants.EPISODES_URL, episodio);
 

@@ -39,6 +39,7 @@ public class SerializationUtils {
 	 * Función que deserializa los personajes y los carga en una lista
 	 * @return List<Character> characters
 	 */
+	@SuppressWarnings("unchecked")
 	public static List<Character> deserializePersonajes() {
 		List<Character> characters = new ArrayList<>();
 		File file = new File(Constants.DATA_FOLDER + Constants.CHARACTERS_FILE);

@@ -70,7 +70,8 @@ public class JsonUtils {
      * @throws Exception Excepción en caso de error
      */
     private static <T> T getApiJson(String urlString, Class<T> genericClass, Gson gson) throws Exception {
-        URL url = new URL(urlString);
+        @SuppressWarnings("deprecation")
+		URL url = new URL(urlString);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("GET");
 

@@ -10,6 +10,7 @@ import org.json.simple.JSONObject;
 /**
  * Clase que contiene los datos de la localización
  */
+@SuppressWarnings("serial")
 public class Location implements Serializable {
 	private int id;
 	private String name;

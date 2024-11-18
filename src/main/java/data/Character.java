@@ -4,8 +4,6 @@ package data;
 import java.io.Serializable;
 import java.util.List;
 
-import org.json.simple.JSONObject;
-
 /**
  * Clase que contiene los datos de los personajes
  */
@@ -16,7 +14,7 @@ public class Character implements Serializable {
     private String species;
     private String type;
     private String gender;
-    private Origin origin;
+	private Origin origin;
     private Location location;
     private String image;
     private List<String> episode;

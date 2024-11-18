@@ -1,20 +1,29 @@
 <episode>
-	<id>50.0</id>
-	<name>Forgetting Sarick Mortshall</name>
-	<air_date>September 5, 2021</air_date>
-	<episode>S05E09</episode>
+	<id>1.0</id>
+	<name>Pilot</name>
+	<air_date>December 2, 2013</air_date>
+	<episode>S01E01</episode>
 	<characters>
 		<character>https://rickandmortyapi.com/api/character/1</character>
 		<character>https://rickandmortyapi.com/api/character/2</character>
-		<character>https://rickandmortyapi.com/api/character/5</character>
-		<character>https://rickandmortyapi.com/api/character/787</character>
-		<character>https://rickandmortyapi.com/api/character/788</character>
-		<character>https://rickandmortyapi.com/api/character/789</character>
-		<character>https://rickandmortyapi.com/api/character/790</character>
-		<character>https://rickandmortyapi.com/api/character/791</character>
-		<character>https://rickandmortyapi.com/api/character/792</character>
-		<character>https://rickandmortyapi.com/api/character/793</character>
+		<character>https://rickandmortyapi.com/api/character/35</character>
+		<character>https://rickandmortyapi.com/api/character/38</character>
+		<character>https://rickandmortyapi.com/api/character/62</character>
+		<character>https://rickandmortyapi.com/api/character/92</character>
+		<character>https://rickandmortyapi.com/api/character/127</character>
+		<character>https://rickandmortyapi.com/api/character/144</character>
+		<character>https://rickandmortyapi.com/api/character/158</character>
+		<character>https://rickandmortyapi.com/api/character/175</character>
+		<character>https://rickandmortyapi.com/api/character/179</character>
+		<character>https://rickandmortyapi.com/api/character/181</character>
+		<character>https://rickandmortyapi.com/api/character/239</character>
+		<character>https://rickandmortyapi.com/api/character/249</character>
+		<character>https://rickandmortyapi.com/api/character/271</character>
+		<character>https://rickandmortyapi.com/api/character/338</character>
+		<character>https://rickandmortyapi.com/api/character/394</character>
+		<character>https://rickandmortyapi.com/api/character/395</character>
+		<character>https://rickandmortyapi.com/api/character/435</character>
 	</characters>
-	<url>https://rickandmortyapi.com/api/episode/50</url>
-	<created>2021-10-15T17:00:24.105Z</created>
+	<url>https://rickandmortyapi.com/api/episode/1</url>
+	<created>2017-11-10T12:56:33.798Z</created>
 </episode>
